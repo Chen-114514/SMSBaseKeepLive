@@ -5,7 +5,7 @@
 ![萌萌计数器](https://count.getloli.com/get/@KeepLiveService?theme=rule34)
 
 <p>
-  <b>🌟 如果觉得有帮助，请点击 <a href="https://github.com/Pangu-Immortal/KeepLiveService/stargazers">Star</a> 支持一下，关注不迷路！🌟</b>
+
 </p>
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
@@ -18,12 +18,10 @@
 </div>
 
 > 安全研究用途：完整复现市面上所有的保活机制，穷尽展示所有保活手段，适配所有的主流机型和 ROM。
-> 
 > 为了拉齐全网共同认知，让小团队开发不在迷茫，开源了全套所有私密函数和私密策略。会长期持续迭代，会陆陆续续的公开所有的隐私策略，ecpm 策略等等，欢迎 star🌟 持续关注。
 > 
 
-🔥 **Telegram 群组**： [点击加群讨论，这里只是冰山一角。](https://t.me/+V7HSo1YNzkFkY2M1)
-
+ 
 
 ## 项目亮点
 
@@ -254,9 +252,7 @@ VendorIntegrationAnalyzer.getFullAnalysisReport(context, "com.moji.mjweather")
 ```
 
 ---
-![二维码](https://github.com/Pangu-Immortal/Pangu-Immortal/blob/main/getqrcode.png)
-
-🔥 **Telegram 群组**： [点击加群讨论，这里只是冰山一角。](https://t.me/+V7HSo1YNzkFkY2M1)
+ 
 
 ## 保活策略完整列表
 
@@ -1272,15 +1268,7 @@ Native 守护进程（fork）在普通应用中效果有限，因为：
 
 - 感谢所有为 Android 安全研究做出贡献的研究者
 - 感谢开源社区的支持
-
----
-
-**Star ⭐ 这个项目如果对你有帮助！**
-
-![二维码](https://github.com/Pangu-Immortal/Pangu-Immortal/blob/main/getqrcode.png)
-
-🔥 **Telegram 群组**： [点击加群讨论，这里只是冰山一角。](https://t.me/+V7HSo1YNzkFkY2M1)
-
+ 
 ---
 （所有功能均提供对 Android 16 版本的适配，添加联系时请备注需求）
 
@@ -1356,13 +1344,4 @@ Native 守护进程（fork）在普通应用中效果有限，因为：
 | AndroidX Splash Screen | 1.2.0 | 启动画面 | [GitHub](https://github.com/androidx/androidx) |
 
 ---
-
-## ⭐ Star 趋势
-
-<a href="https://star-history.com/#Pangu-Immortal/KeepLiveService&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=Pangu-Immortal/KeepLiveService&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=Pangu-Immortal/KeepLiveService&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=Pangu-Immortal/KeepLiveService&type=Date" />
- </picture>
-</a>
+ 
