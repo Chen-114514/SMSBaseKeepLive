@@ -1,0 +1,992 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    xmlns:tools="http://schemas.android.com/tools"
+4    package="com.service.framework" >
+5
+6    <uses-sdk android:minSdkVersion="24" />
+7
+8    <!--
+9        Fw 保活模块
+10        安全研究用途：完整复现音乐类应用的保活机制
+11
+12        权限说明：
+13        1. 前台服务权限 - 启动前台服务
+14        2. 蓝牙权限 - 监听蓝牙事件（核心保活机制）
+15        3. USB 权限 - 监听 USB 设备连接（打印机、U盘、配件）
+16        4. NFC 权限 - 监听 NFC 标签发现
+17        5. 网络权限 - 监听网络变化
+18        6. 电源权限 - WakeLock
+19        7. 闹钟权限 - AlarmManager
+20        8. 开机广播权限 - 开机自启
+21        9. 账户权限 - 账户同步
+22    -->
+23
+24
+25    <!-- ==================== 权限声明 ==================== -->
+26
+27
+28    <!-- 前台服务权限 -->
+29    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+29-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:24:5-77
+29-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:24:22-74
+30    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+30-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:25:5-92
+30-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:25:22-89
+31    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+31-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:26:5-87
+31-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:26:22-84
+32
+33    <!-- 蓝牙权限（核心：酷狗音乐的关键） -->
+34    <uses-permission
+34-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:29:5-31:38
+35        android:name="android.permission.BLUETOOTH"
+35-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:30:9-52
+36        android:maxSdkVersion="30" />
+36-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:31:9-35
+37    <uses-permission
+37-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:32:5-34:38
+38        android:name="android.permission.BLUETOOTH_ADMIN"
+38-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:33:9-58
+39        android:maxSdkVersion="30" />
+39-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:34:9-35
+40    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+40-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:35:5-76
+40-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:35:22-73
+41    <uses-permission
+41-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:36:5-39:31
+42        android:name="android.permission.BLUETOOTH_SCAN"
+42-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:37:9-57
+43        android:usesPermissionFlags="neverForLocation"
+43-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:38:9-55
+44        tools:targetApi="s" />
+44-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:39:9-28
+45
+46    <!-- USB 权限（打印机、U盘、配件等） -->
+47    <uses-feature
+47-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:42:5-44:36
+48        android:name="android.hardware.usb.host"
+48-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:43:9-49
+49        android:required="false" />
+49-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:44:9-33
+50    <uses-feature
+50-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:45:5-47:36
+51        android:name="android.hardware.usb.accessory"
+51-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:46:9-54
+52        android:required="false" />
+52-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:47:9-33
+53
+54    <!-- NFC 权限 -->
+55    <uses-permission android:name="android.permission.NFC" />
+55-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:50:5-62
+55-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:50:22-59
+56
+57    <uses-feature
+57-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:51:5-53:36
+58        android:name="android.hardware.nfc"
+58-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:52:9-44
+59        android:required="false" />
+59-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:53:9-33
+60
+61    <!-- 网络权限 -->
+62    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+62-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:56:5-79
+62-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:56:22-76
+63    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+63-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:57:5-76
+63-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:57:22-73
+64    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+64-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:58:5-76
+64-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:58:22-73
+65    <uses-permission android:name="android.permission.INTERNET" />
+65-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:59:5-67
+65-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:59:22-64
+66
+67    <!-- 电源权限 -->
+68    <uses-permission android:name="android.permission.WAKE_LOCK" />
+68-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:62:5-68
+68-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:62:22-65
+69    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+69-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:63:5-95
+69-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:63:22-92
+70
+71    <!-- 闹钟权限 -->
+72    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+72-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:66:5-79
+72-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:66:22-76
+73    <!-- USE_EXACT_ALARM 仅在 API 33+ 可用，低版本会自动忽略 -->
+74    <uses-permission
+74-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:68:5-70:37
+75        android:name="android.permission.USE_EXACT_ALARM"
+75-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:69:9-58
+76        tools:ignore="ExactAlarm" />
+76-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:70:9-34
+77
+78    <!-- 开机广播权限 -->
+79    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+79-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:73:5-81
+79-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:73:22-78
+80
+81    <!-- 账户权限 -->
+82    <uses-permission
+82-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:76:5-78:38
+83        android:name="android.permission.AUTHENTICATE_ACCOUNTS"
+83-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:77:9-64
+84        android:maxSdkVersion="22" />
+84-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:78:9-35
+85    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+85-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:79:5-71
+85-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:79:22-68
+86    <uses-permission
+86-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:80:5-82:38
+87        android:name="android.permission.MANAGE_ACCOUNTS"
+87-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:81:9-58
+88        android:maxSdkVersion="22" />
+88-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:82:9-35
+89    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+89-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:83:5-77
+89-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:83:22-74
+90    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+90-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:84:5-78
+90-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:84:22-75
+91
+92    <!-- 通知权限 -->
+93    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+93-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:87:5-77
+93-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:87:22-74
+94
+95    <!-- 存储权限（用于 ContentObserver 和 FileObserver） -->
+96    <uses-permission
+96-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:90:5-92:38
+97        android:name="android.permission.READ_EXTERNAL_STORAGE"
+97-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:91:9-64
+98        android:maxSdkVersion="32" />
+98-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:92:9-35
+99    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+99-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:93:5-76
+99-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:93:22-73
+100    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+100-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:94:5-75
+100-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:94:22-72
+101    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+101-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:95:5-75
+101-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:95:22-72
+102
+103    <!-- 联系人权限（用于 ContentObserver） -->
+104    <uses-permission android:name="android.permission.READ_CONTACTS" />
+104-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:98:5-72
+104-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:98:22-69
+105
+106    <!-- 短信权限（用于 ContentObserver） -->
+107    <uses-permission android:name="android.permission.READ_SMS" />
+107-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:101:5-67
+107-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:101:22-64
+108
+109    <!-- 悬浮窗权限（用于悬浮球保活） -->
+110    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+110-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:104:5-78
+110-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:104:22-75
+111
+112    <!-- 锁屏显示权限 -->
+113    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+113-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:107:5-75
+113-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:107:22-72
+114    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+114-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:108:5-81
+114-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:108:22-78
+115
+116    <!-- 核心权限 -->
+117    <uses-feature
+117-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:111:5-113:36
+118        android:name="android.hardware.telephony"
+118-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:112:9-50
+119        android:required="false" />
+119-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:113:9-33
+120
+121    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+121-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:115:5-70
+121-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:115:22-67
+122    <uses-permission android:name="android.permission.READ_CONTACTS" />
+122-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:98:5-72
+122-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:98:22-69
+123    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+123-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:87:5-77
+123-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:87:22-74
+124    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+124-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:108:5-81
+124-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:108:22-78
+125    <uses-permission android:name="android.permission.WAKE_LOCK" />
+125-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:62:5-68
+125-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:62:22-65
+126    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- 开机自启 -->
+126-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:73:5-81
+126-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:73:22-78
+127    <uses-permission android:name="android.permission.VIBRATE" />
+127-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:121:5-66
+127-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:121:22-63
+128
+129    <!--
+130        Instrumentation 保活组件
+131        用于通过 am instrument 命令拉活
+132        注意：instrumentation 标签必须放在 manifest 根级别，不能放在 application 内
+133    -->
+134    <instrumentation
+134-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:590:5-593:153
+135        android:name="com.service.framework.strategy.forcestop.FwInstrumentation"
+135-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:591:9-82
+136        android:targetPackage="${applicationId}"
+136-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:592:9-49
+137        android:targetProcesses="${applicationId},${applicationId}:daemon,${applicationId}:assist1,${applicationId}:assist2,${applicationId}:assist3" />
+137-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:593:9-150
+138
+139    <application>
+139-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:123:5-583:19
+140
+141        <!-- ==================== 前台服务 ==================== -->
+142
+143
+144        <!--
+145            主保活服务
+146            foregroundServiceType="mediaPlayback" 是关键
+147            让系统认为这是媒体播放服务，获得特殊后台权限
+148        -->
+149        <service
+149-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:132:9-135:61
+150            android:name="com.service.framework.service.FwForegroundService"
+150-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:133:13-77
+151            android:exported="false"
+151-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:134:13-37
+152            android:foregroundServiceType="mediaPlayback" />
+152-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:135:13-58
+153
+154        <!--
+155            守护进程服务
+156            运行在独立进程 :daemon
+157            与主进程互相守护
+158        -->
+159        <service
+159-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:142:9-146:41
+160            android:name="com.service.framework.service.DaemonService"
+160-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:143:13-71
+161            android:exported="false"
+161-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:144:13-37
+162            android:foregroundServiceType="dataSync"
+162-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:145:13-53
+163            android:process=":daemon" />
+163-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:146:13-38
+164
+165        <!-- ==================== JobScheduler 服务 ==================== -->
+166
+167        <service
+167-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:150:9-153:72
+168            android:name="com.service.framework.strategy.FwJobService"
+168-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:151:13-71
+169            android:exported="true"
+169-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:152:13-36
+170            android:permission="android.permission.BIND_JOB_SERVICE" />
+170-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:153:13-69
+171
+172        <!-- ==================== 账户同步服务 ==================== -->
+173
+174
+175        <!-- 账户认证服务 -->
+176        <service
+176-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:158:9-167:19
+177            android:name="com.service.framework.account.AuthenticatorService"
+177-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:159:13-78
+178            android:exported="true" >
+178-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:160:13-36
+179            <intent-filter>
+179-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:161:13-163:29
+180                <action android:name="android.accounts.AccountAuthenticator" />
+180-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:162:17-80
+180-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:162:25-77
+181            </intent-filter>
+182
+183            <meta-data
+183-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:164:13-166:57
+184                android:name="android.accounts.AccountAuthenticator"
+184-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:165:17-69
+185                android:resource="@xml/authenticator" />
+185-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:166:17-54
+186        </service>
+187
+188        <!-- 同步服务 -->
+189        <service
+189-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:170:9-179:19
+190            android:name="com.service.framework.account.SyncService"
+190-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:171:13-69
+191            android:exported="true" >
+191-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:172:13-36
+192            <intent-filter>
+192-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:173:13-175:29
+193                <action android:name="android.content.SyncAdapter" />
+193-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:174:17-70
+193-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:174:25-67
+194            </intent-filter>
+195
+196            <meta-data
+196-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:176:13-178:55
+197                android:name="android.content.SyncAdapter"
+197-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:177:17-59
+198                android:resource="@xml/syncadapter" />
+198-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:178:17-52
+199        </service>
+200
+201        <!-- 同步用 ContentProvider -->
+202        <provider
+202-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:182:9-186:39
+203            android:name="com.service.framework.account.StubContentProvider"
+203-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:183:13-77
+204            android:authorities="com.service.framework.account"
+204-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:184:13-64
+205            android:exported="false"
+205-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:185:13-37
+206            android:syncable="true" />
+206-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:186:13-36
+207
+208        <!-- ==================== 广播接收器 ==================== -->
+209
+210
+211        <!--
+212            蓝牙广播接收器（核心：酷狗音乐唤醒的关键）
+213
+214            监听的广播：
+215            1. ACL_CONNECTED - 蓝牙设备底层连接
+216            2. A2DP连接状态 - 音频连接
+217            3. 耳机连接状态 - 耳机profile连接
+218            4. 蓝牙适配器状态 - 蓝牙开关
+219            5. A2DP播放状态 - 音频播放
+220            6. 音频输出变化 - 耳机拔出
+221
+222            这些广播可以静态注册，即使应用被杀也能唤醒
+223            但强制停止后会被禁用
+224        -->
+225        <receiver
+225-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:204:9-230:20
+226            android:name="com.service.framework.receiver.BluetoothReceiver"
+226-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:205:13-76
+227            android:enabled="true"
+227-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:206:13-35
+228            android:exported="true" >
+228-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:207:13-36
+229            <intent-filter android:priority="1000" >
+229-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:208:13-229:29
+229-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:208:28-51
+230
+231                <!-- 蓝牙设备连接（底层ACL） -->
+232                <action android:name="android.bluetooth.device.action.ACL_CONNECTED" />
+232-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:210:17-88
+232-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:210:25-85
+233                <action android:name="android.bluetooth.device.action.ACL_DISCONNECTED" />
+233-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:211:17-91
+233-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:211:25-88
+234
+235                <!-- A2DP 音频连接状态 -->
+236                <action android:name="android.bluetooth.a2dp.profile.action.CONNECTION_STATE_CHANGED" />
+236-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:214:17-105
+236-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:214:25-102
+237                <action android:name="android.bluetooth.a2dp.profile.action.PLAYING_STATE_CHANGED" />
+237-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:215:17-102
+237-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:215:25-99
+238
+239                <!-- 蓝牙耳机连接状态 -->
+240                <action android:name="android.bluetooth.headset.profile.action.CONNECTION_STATE_CHANGED" />
+240-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:218:17-108
+240-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:218:25-105
+241
+242                <!-- 蓝牙适配器状态 -->
+243                <action android:name="android.bluetooth.adapter.action.STATE_CHANGED" />
+243-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:221:17-89
+243-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:221:25-86
+244                <action android:name="android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED" />
+244-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:222:17-100
+244-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:222:25-97
+245
+246                <!-- 音频输出变化 -->
+247                <action android:name="android.media.AUDIO_BECOMING_NOISY" />
+247-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:225:17-77
+247-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:225:25-74
+248
+249                <!-- 测试广播 -->
+250                <action android:name="com.service.framework.TEST_WAKEUP" />
+250-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:228:17-76
+250-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:228:25-73
+251            </intent-filter>
+252        </receiver>
+253
+254        <!--
+255            媒体按键广播接收器
+256
+257            监听媒体按键事件，蓝牙耳机的按键也会触发
+258        -->
+259        <receiver
+259-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:237:9-244:20
+260            android:name="com.service.framework.receiver.MediaButtonReceiver"
+260-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:238:13-78
+261            android:enabled="true"
+261-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:239:13-35
+262            android:exported="true" >
+262-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:240:13-36
+263            <intent-filter android:priority="2147483647" >
+263-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:241:13-243:29
+263-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:241:28-57
+264                <action android:name="android.intent.action.MEDIA_BUTTON" />
+264-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:242:17-77
+264-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:242:25-74
+265            </intent-filter>
+266        </receiver>
+267
+268        <!--
+269            系统事件广播接收器
+270
+271            以下广播可以静态注册：
+272            - BOOT_COMPLETED - 开机完成
+273            - LOCKED_BOOT_COMPLETED - 锁定启动完成
+274            - MY_PACKAGE_REPLACED - 应用更新
+275
+276            注意：大部分系统广播在 Android 8.0+ 无法静态注册
+277            需要动态注册
+278        -->
+279        <receiver
+279-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:257:9-284:20
+280            android:name="com.service.framework.receiver.SystemEventReceiver"
+280-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:258:13-78
+281            android:directBootAware="true"
+281-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:259:13-43
+282            android:enabled="true"
+282-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:260:13-35
+283            android:exported="true" >
+283-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:261:13-36
+284            <intent-filter android:priority="1000" >
+284-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:262:13-283:29
+284-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:262:28-51
+285
+286                <!-- 开机完成（可静态注册） -->
+287                <action android:name="android.intent.action.BOOT_COMPLETED" />
+287-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:264:17-79
+287-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:264:25-76
+288                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+288-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:265:17-86
+288-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:265:25-83
+289
+290                <!-- 应用更新（可静态注册） -->
+291                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+291-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:268:17-84
+291-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:268:25-81
+292
+293                <!-- 以下广播在旧版本可静态注册 -->
+294                <action android:name="android.intent.action.USER_PRESENT" />
+294-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:271:17-77
+294-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:271:25-74
+295                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+295-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:272:17-79
+295-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:272:25-76
+296                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+296-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:273:17-87
+296-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:273:25-84
+297                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+297-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:274:17-90
+297-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:274:25-87
+298                <action android:name="android.intent.action.SCREEN_ON" />
+298-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:275:17-74
+298-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:275:25-71
+299                <action android:name="android.intent.action.TIME_SET" />
+299-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:276:17-73
+299-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:276:25-70
+300                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+300-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:277:17-81
+300-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:277:25-78
+301                <action android:name="android.intent.action.LOCALE_CHANGED" />
+301-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:278:17-79
+301-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:278:25-76
+302                <action android:name="android.intent.action.AIRPLANE_MODE" />
+302-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:279:17-78
+302-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:279:25-75
+303
+304                <!-- Native 层唤醒广播 -->
+305                <action android:name="com.service.framework.NATIVE_WAKEUP" />
+305-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:282:17-78
+305-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:282:25-75
+306            </intent-filter>
+307        </receiver>
+308
+309        <!--
+310            USB 设备广播接收器
+311
+312            监听 USB 设备连接事件：
+313            - 打印机、扫描仪
+314            - U盘、移动硬盘
+315            - 摄像头
+316            - USB 配件（AOA 模式）
+317
+318            USB 广播可以静态注册！
+319        -->
+320        <receiver
+320-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:297:9-313:20
+321            android:name="com.service.framework.receiver.UsbReceiver"
+321-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:298:13-70
+322            android:enabled="true"
+322-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:299:13-35
+323            android:exported="true" >
+323-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:300:13-36
+324            <intent-filter android:priority="1000" >
+324-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:301:13-312:29
+324-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:301:28-51
+325
+326                <!-- USB 设备连接/断开 -->
+327                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+327-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:303:17-90
+327-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:303:25-87
+328                <action android:name="android.hardware.usb.action.USB_DEVICE_DETACHED" />
+328-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:304:17-90
+328-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:304:25-87
+329
+330                <!-- USB 配件（AOA 模式）连接/断开 -->
+331                <action android:name="android.hardware.usb.action.USB_ACCESSORY_ATTACHED" />
+331-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:307:17-93
+331-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:307:25-90
+332                <action android:name="android.hardware.usb.action.USB_ACCESSORY_DETACHED" />
+332-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:308:17-93
+332-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:308:25-90
+333
+334                <!-- USB 状态变化 -->
+335                <action android:name="android.hardware.usb.action.USB_STATE" />
+335-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:311:17-80
+335-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:311:25-77
+336            </intent-filter>
+337        </receiver>
+338
+339        <!--
+340            NFC 广播接收器
+341
+342            监听 NFC 事件：
+343            - NFC 标签发现
+344            - NFC 适配器状态变化
+345
+346            NFC 广播可以静态注册！
+347            需要在 tech_list.xml 中指定支持的技术
+348        -->
+349        <receiver
+349-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:325:9-344:20
+350            android:name="com.service.framework.receiver.NfcReceiver"
+350-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:326:13-70
+351            android:enabled="true"
+351-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:327:13-35
+352            android:exported="true" >
+352-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:328:13-36
+353            <intent-filter android:priority="1000" >
+353-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:329:13-338:29
+353-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:329:28-51
+354
+355                <!-- NFC 标签发现（通用，作为最后回退） -->
+356                <action android:name="android.nfc.action.TAG_DISCOVERED" />
+356-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:331:17-76
+356-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:331:25-73
+357
+358                <!-- NFC 适配器状态变化 -->
+359                <action android:name="android.nfc.action.ADAPTER_STATE_CHANGED" />
+359-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:334:17-83
+359-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:334:25-80
+360
+361                <!-- NFC 交易检测（HCE） -->
+362                <action android:name="android.nfc.action.TRANSACTION_DETECTED" />
+362-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:337:17-82
+362-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:337:25-79
+363            </intent-filter>
+364
+365            <!-- 支持所有 NFC 技术 -->
+366            <meta-data
+366-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:341:13-343:57
+367                android:name="android.nfc.action.TECH_DISCOVERED"
+367-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:342:17-66
+368                android:resource="@xml/nfc_tech_list" />
+368-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:343:17-54
+369        </receiver>
+370
+371        <!--
+372            媒体挂载广播接收器
+373
+374            监听外部存储事件：
+375            - SD 卡插拔
+376            - U盘挂载/卸载
+377            - 媒体扫描完成
+378
+379            媒体挂载广播可以静态注册！
+380        -->
+381        <receiver
+381-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:356:9-375:20
+382            android:name="com.service.framework.receiver.MediaMountReceiver"
+382-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:357:13-77
+383            android:enabled="true"
+383-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:358:13-35
+384            android:exported="true" >
+384-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:359:13-36
+385            <intent-filter android:priority="1000" >
+385-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:360:13-374:29
+385-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:360:28-51
+386
+387                <!-- 存储挂载/卸载 -->
+388                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+388-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:362:17-78
+388-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:362:25-75
+389                <action android:name="android.intent.action.MEDIA_UNMOUNTED" />
+389-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:363:17-80
+389-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:363:25-77
+390                <action android:name="android.intent.action.MEDIA_EJECT" />
+390-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:364:17-76
+390-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:364:25-73
+391                <action android:name="android.intent.action.MEDIA_REMOVED" />
+391-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:365:17-78
+391-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:365:25-75
+392                <action android:name="android.intent.action.MEDIA_BAD_REMOVAL" />
+392-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:366:17-82
+392-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:366:25-79
+393
+394                <!-- 媒体扫描 -->
+395                <action android:name="android.intent.action.MEDIA_SCANNER_STARTED" />
+395-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:369:17-86
+395-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:369:25-83
+396                <action android:name="android.intent.action.MEDIA_SCANNER_FINISHED" />
+396-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:370:17-87
+396-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:370:25-84
+397
+398                <!-- 需要 file scheme -->
+399                <data android:scheme="file" />
+399-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:373:17-47
+399-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:373:23-44
+400            </intent-filter>
+401        </receiver>
+402
+403        <!-- AlarmManager 唤醒接收器 -->
+404        <receiver
+404-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:378:9-381:40
+405            android:name="com.service.framework.strategy.AlarmReceiver"
+405-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:379:13-72
+406            android:enabled="true"
+406-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:380:13-35
+407            android:exported="false" />
+407-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:381:13-37
+408
+409        <!-- ==================== 系统级服务 ==================== -->
+410
+411
+412        <!--
+413            无障碍服务
+414
+415            系统级服务，优先级极高
+416            需要用户手动开启，但开启后非常稳定
+417            系统不会随意杀死无障碍服务
+418        -->
+419        <service
+419-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:392:9-402:19
+420            android:name="com.service.framework.strategy.FwAccessibilityService"
+420-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:393:13-81
+421            android:exported="true"
+421-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:394:13-36
+422            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" >
+422-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:395:13-79
+423            <intent-filter>
+423-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:396:13-398:29
+424                <action android:name="android.accessibilityservice.AccessibilityService" />
+424-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:397:17-92
+424-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:397:25-89
+425            </intent-filter>
+426
+427            <meta-data
+427-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:399:13-401:72
+428                android:name="android.accessibilityservice"
+428-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:400:17-60
+429                android:resource="@xml/accessibility_service_config" />
+429-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:401:17-69
+430        </service>
+431
+432        <!--
+433            通知监听服务
+434
+435            系统级服务，可以监听所有通知
+436            需要用户手动授权，授权后服务会被系统保护
+437            被杀后系统会自动重启
+438        -->
+439        <service
+439-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:411:9-418:19
+440            android:name="com.service.framework.strategy.FwNotificationListenerService"
+440-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:412:13-88
+441            android:exported="true"
+441-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:413:13-36
+442            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" >
+442-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:414:13-87
+443            <intent-filter>
+443-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:415:13-417:29
+444                <action android:name="android.service.notification.NotificationListenerService" />
+444-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:416:17-99
+444-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:416:25-96
+445            </intent-filter>
+446        </service>
+447
+448        <!-- ==================== 1 像素 Activity ==================== -->
+449
+450
+451        <!--
+452            1 像素 Activity
+453
+454            在屏幕关闭时启动，提升进程优先级
+455            设置为透明主题，对用户不可见
+456        -->
+457        <activity
+457-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:428:9-435:75
+458            android:name="com.service.framework.strategy.OnePixelActivity"
+458-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:429:13-75
+459            android:configChanges="keyboardHidden|orientation|screenSize"
+459-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:430:13-74
+460            android:excludeFromRecents="true"
+460-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:431:13-46
+461            android:exported="false"
+461-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:432:13-37
+462            android:finishOnTaskLaunch="false"
+462-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:433:13-47
+463            android:launchMode="singleInstance"
+463-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:434:13-48
+464            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+464-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:435:13-72
+465
+466        <!-- ==================== 锁屏 Activity ==================== -->
+467
+468
+469        <!--
+470            锁屏 Activity
+471
+472            在锁屏界面上显示，类似墨迹天气的"锁屏天气"
+473            可以显示时钟、天气等"有用"信息
+474            实际上是保活手段，让应用保持前台状态
+475        -->
+476        <activity
+476-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:446:9-455:43
+477            android:name="com.service.framework.strategy.LockScreenActivity"
+477-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:447:13-77
+478            android:configChanges="keyboardHidden|orientation|screenSize|screenLayout"
+478-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:448:13-87
+479            android:excludeFromRecents="true"
+479-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:449:13-46
+480            android:exported="false"
+480-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:450:13-37
+481            android:launchMode="singleInstance"
+481-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:451:13-48
+482            android:showOnLockScreen="true"
+482-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:452:13-44
+483            android:showWhenLocked="true"
+483-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:453:13-42
+484            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+484-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:454:13-71
+485            android:turnScreenOn="true" />
+485-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:455:13-40
+486
+487        <!-- ==================== 无法强制停止策略 ==================== -->
+488
+489
+490        <!--
+491            辅助进程服务 1
+492            运行在独立进程 :assist1
+493            与其他辅助进程互相守护
+494        -->
+495        <service
+495-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:464:9-468:42
+496            android:name="com.service.framework.strategy.forcestop.AssistService1"
+496-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:465:13-83
+497            android:exported="false"
+497-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:466:13-37
+498            android:foregroundServiceType="dataSync"
+498-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:467:13-53
+499            android:process=":assist1" />
+499-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:468:13-39
+500        <service
+500-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:469:9-473:11
+501            android:name="com.service.framework.service.FloatWindowService"
+501-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:470:13-55
+502            android:foregroundServiceType="dataSync"
+502-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:471:13-53
+503            android:process=":FloatWindowService" />
+503-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:472:13-50
+504        <!--
+505            辅助进程服务 2
+506            运行在独立进程 :assist2
+507        -->
+508        <service
+508-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:478:9-482:42
+509            android:name="com.service.framework.strategy.forcestop.AssistService2"
+509-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:479:13-83
+510            android:exported="false"
+510-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:480:13-37
+511            android:foregroundServiceType="dataSync"
+511-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:481:13-53
+512            android:process=":assist2" />
+512-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:482:13-39
+513
+514        <!--
+515            辅助进程服务 3
+516            运行在独立进程 :assist3
+517        -->
+518        <service
+518-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:488:9-492:42
+519            android:name="com.service.framework.strategy.forcestop.AssistService3"
+519-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:489:13-83
+520            android:exported="false"
+520-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:490:13-37
+521            android:foregroundServiceType="dataSync"
+521-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:491:13-53
+522            android:process=":assist3" />
+522-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:492:13-39
+523
+524        <!--
+525            强制停止唤醒广播接收器
+526            用于接收唤醒广播
+527        -->
+528        <receiver
+528-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:498:9-501:40
+529            android:name="com.service.framework.strategy.forcestop.ForceStopReceiver"
+529-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:499:13-86
+530            android:enabled="true"
+530-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:500:13-35
+531            android:exported="false" />
+531-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:501:13-37
+532
+533        <!-- ==================== MediaRoute 保活策略 ==================== -->
+534
+535
+536        <!--
+537            MediaRouteProviderService（核心：酷狗音乐的保活技术）
+538
+539            通过向系统注册虚拟媒体路由，获得"媒体类应用"身份
+540            系统会维护与此服务的 Binder 连接，不容易被杀死
+541
+542            关键点：
+543            1. 声明 android.media.MediaRouteProviderService intent-filter
+544            2. 系统 MediaRouter 会自动发现并连接此服务
+545            3. 连接建立后，服务进程优先级提升
+546        -->
+547        <service
+547-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:516:9-522:19
+548            android:name="com.service.framework.mediaroute.FwMediaRouteProviderService"
+548-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:517:13-88
+549            android:exported="true" >
+549-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:518:13-36
+550            <intent-filter>
+550-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:519:13-521:29
+551                <action android:name="android.media.MediaRouteProviderService" />
+551-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:520:17-82
+551-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:520:25-79
+552            </intent-filter>
+553        </service>
+554
+555        <!--
+556            MediaRoute2ProviderService（Android 11+ 新 API）
+557
+558            Android R (API 30) 引入的新媒体路由 API
+559            与旧版 MediaRouteProviderService 并存，实现双重保活
+560        -->
+561        <service
+561-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:530:9-536:19
+562            android:name="com.service.framework.mediaroute.FwMediaRoute2ProviderService"
+562-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:531:13-89
+563            android:exported="true" >
+563-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:532:13-36
+564            <intent-filter>
+564-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:533:13-535:29
+565                <action android:name="android.media.MediaRoute2ProviderService" />
+565-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:534:17-83
+565-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:534:25-80
+566            </intent-filter>
+567        </service>
+568
+569        <!--
+570            媒体意图处理 Activity
+571
+572            处理系统媒体相关的隐式意图
+573            通过注册媒体类型的 intent-filter，使应用可以被系统广播唤醒
+574            收到意图后触发保活检查，然后静默关闭
+575        -->
+576        <activity
+576-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:545:9-581:20
+577            android:name="com.service.framework.mediaroute.FwMediaActivity"
+577-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:546:13-76
+578            android:excludeFromRecents="true"
+578-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:547:13-46
+579            android:exported="true"
+579-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:548:13-36
+580            android:noHistory="true"
+580-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:549:13-37
+581            android:taskAffinity=""
+581-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:550:13-36
+582            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+582-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:551:13-72
+583
+584            <!-- 处理音频文件查看 -->
+585            <intent-filter android:priority="-999" >
+585-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:554:13-558:29
+585-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:554:28-51
+586                <action android:name="android.intent.action.VIEW" />
+586-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:555:17-69
+586-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:555:25-66
+587
+588                <category android:name="android.intent.category.DEFAULT" />
+588-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:556:17-76
+588-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:556:27-73
+589
+590                <data android:mimeType="audio/*" />
+590-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:373:17-47
+590-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:557:23-49
+591            </intent-filter>
+592
+593            <!-- 处理视频文件查看 -->
+594            <intent-filter android:priority="-999" >
+594-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:561:13-565:29
+594-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:561:28-51
+595                <action android:name="android.intent.action.VIEW" />
+595-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:555:17-69
+595-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:555:25-66
+596
+597                <category android:name="android.intent.category.DEFAULT" />
+597-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:556:17-76
+597-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:556:27-73
+598
+599                <data android:mimeType="video/*" />
+599-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:373:17-47
+599-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:557:23-49
+600            </intent-filter>
+601
+602            <!-- 处理分享的音频 -->
+603            <intent-filter android:priority="-999" >
+603-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:568:13-572:29
+603-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:568:28-51
+604                <action android:name="android.intent.action.SEND" />
+604-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:569:17-69
+604-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:569:25-66
+605
+606                <category android:name="android.intent.category.DEFAULT" />
+606-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:556:17-76
+606-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:556:27-73
+607
+608                <data android:mimeType="audio/*" />
+608-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:373:17-47
+608-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:557:23-49
+609            </intent-filter>
+610
+611            <!-- 处理分享的视频 -->
+612            <intent-filter android:priority="-999" >
+612-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:575:13-579:29
+612-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:575:28-51
+613                <action android:name="android.intent.action.SEND" />
+613-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:569:17-69
+613-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:569:25-66
+614
+615                <category android:name="android.intent.category.DEFAULT" />
+615-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:556:17-76
+615-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:556:27-73
+616
+617                <data android:mimeType="video/*" />
+617-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:373:17-47
+617-->/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:557:23-49
+618            </intent-filter>
+619        </activity>
+620    </application>
+621
+622</manifest>

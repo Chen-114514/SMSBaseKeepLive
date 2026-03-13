@@ -1,0 +1,14 @@
+# ninja log v5
+0	143	1773298407552247803	CMakeFiles/fw_native.dir/binder/data_transact.cpp.o	7bb569719d5e6331
+3	148	1773298407549884372	CMakeFiles/fw_native.dir/utils/Unicode.cpp.o	d0b5301d8f7327c6
+0	148	1773298407558316418	CMakeFiles/fw_native.dir/fw_force_stop.cpp.o	279f7427b53c9f6
+0	188	1773298407594963890	CMakeFiles/fw_native.dir/binder/cParcel.cpp.o	7469bc6552a64410
+7	191	1773298407598582576	CMakeFiles/fw_native.dir/utils/String16.cpp.o	19e334c760667e0
+7	204	1773298407614050375	CMakeFiles/fw_native.dir/utils/SharedBuffer.cpp.o	2cf4dc04b7557fb0
+0	425	1773298407825173176	CMakeFiles/fw_native.dir/fw_daemon.cpp.o	2d6b74112e9b6b08
+9	430	1773298407838444164	mediaroute/CMakeFiles/fw_mediaroute.dir/fw_mediaroute_jni.cpp.o	fb3c6bdac7319a05
+0	440	1773298407845586830	CMakeFiles/fw_native.dir/fw_jni.cpp.o	914adc9c8e7b039e
+0	443	1773298407850961216	CMakeFiles/fw_native.dir/fw_process.cpp.o	d16d7e2fd1fecb86
+0	472	1773298407880119740	CMakeFiles/fw_native.dir/fw_socket.cpp.o	9ed47a9611df696c
+433	485	1773298407894259161	/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/build/intermediates/cxx/Debug/o356b3rg/obj/arm64-v8a/libfw_mediaroute.so	6c2c1d9d747fafe2
+472	517	1773298407925405878	/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/build/intermediates/cxx/Debug/o356b3rg/obj/arm64-v8a/libfw_native.so	7140ebc48b5aa2a4

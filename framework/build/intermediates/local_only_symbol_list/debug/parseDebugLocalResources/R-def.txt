@@ -1,0 +1,22 @@
+R_DEF: Internal format may change without notice
+local
+drawable ic_account
+drawable ic_notification
+id btn_dismiss
+id root_layout
+id tv_alert_message
+layout activity_alert
+raw silent
+raw siren1
+raw siren2
+raw siren3
+raw siren4
+string accessibility_service_description
+string fw_account_label
+string fw_notification_channel
+string fw_notification_content
+string fw_notification_title
+xml accessibility_service_config
+xml authenticator
+xml nfc_tech_list
+xml syncadapter

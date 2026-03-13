@@ -1,0 +1,20 @@
+/Users/zhaihongyuan/Library/android/sdk/cmake/3.22.1/bin/cmake \
+  -H/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/cpp \
+  -DCMAKE_SYSTEM_NAME=Android \
+  -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
+  -DCMAKE_SYSTEM_VERSION=24 \
+  -DANDROID_PLATFORM=android-24 \
+  -DANDROID_ABI=arm64-v8a \
+  -DCMAKE_ANDROID_ARCH_ABI=arm64-v8a \
+  -DANDROID_NDK=/Users/zhaihongyuan/Library/android/sdk/ndk/28.2.13676358 \
+  -DCMAKE_ANDROID_NDK=/Users/zhaihongyuan/Library/android/sdk/ndk/28.2.13676358 \
+  -DCMAKE_TOOLCHAIN_FILE=/Users/zhaihongyuan/Library/android/sdk/ndk/28.2.13676358/build/cmake/android.toolchain.cmake \
+  -DCMAKE_MAKE_PROGRAM=/Users/zhaihongyuan/Library/android/sdk/cmake/3.22.1/bin/ninja \
+  -DCMAKE_CXX_FLAGS=-std=c++17 \
+  -DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/build/intermediates/cxx/Debug/o356b3rg/obj/arm64-v8a \
+  -DCMAKE_RUNTIME_OUTPUT_DIRECTORY=/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/build/intermediates/cxx/Debug/o356b3rg/obj/arm64-v8a \
+  -DCMAKE_BUILD_TYPE=Debug \
+  -B/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/.cxx/Debug/o356b3rg/arm64-v8a \
+  -GNinja \
+  -DANDROID_STL=c++_shared \
+  -DANDROID_TOOLCHAIN=clang

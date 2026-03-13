@@ -1,0 +1,46 @@
+{
+  "buildFiles": [
+    "/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/cpp/CMakeLists.txt",
+    "/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/cpp/mediaroute/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/zhaihongyuan/Library/android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/.cxx/Debug/o356b3rg/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/zhaihongyuan/Library/android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/.cxx/Debug/o356b3rg/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "fw_mediaroute::@ee91d83fd16c9342dcd1": {
+      "toolchain": "toolchain",
+      "abi": "x86",
+      "artifactName": "fw_mediaroute",
+      "output": "/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/build/intermediates/cxx/Debug/o356b3rg/obj/x86/libfw_mediaroute.so",
+      "runtimeFiles": []
+    },
+    "fw_native::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "x86",
+      "artifactName": "fw_native",
+      "output": "/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/build/intermediates/cxx/Debug/o356b3rg/obj/x86/libfw_native.so",
+      "runtimeFiles": []
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "/Users/zhaihongyuan/Library/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang.lld",
+      "cppCompilerExecutable": "/Users/zhaihongyuan/Library/android/sdk/ndk/28.2.13676358/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++.lld"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

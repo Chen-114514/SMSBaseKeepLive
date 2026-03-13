@@ -1,0 +1,6 @@
+/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/.cxx/Debug/o356b3rg/x86/CMakeFiles/fw_native.dir
+/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/.cxx/Debug/o356b3rg/x86/CMakeFiles/edit_cache.dir
+/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/.cxx/Debug/o356b3rg/x86/CMakeFiles/rebuild_cache.dir
+/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/.cxx/Debug/o356b3rg/x86/mediaroute/CMakeFiles/fw_mediaroute.dir
+/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/.cxx/Debug/o356b3rg/x86/mediaroute/CMakeFiles/edit_cache.dir
+/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/.cxx/Debug/o356b3rg/x86/mediaroute/CMakeFiles/rebuild_cache.dir

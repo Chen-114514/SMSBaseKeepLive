@@ -1,0 +1,2 @@
+ninja: Entering directory `/Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/.cxx/Debug/o356b3rg/arm64-v8a'
+ninja: no work to do.

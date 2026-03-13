@@ -1,0 +1,704 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:2:1-595:12
+INJECTED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:2:1-595:12
+	package
+		INJECTED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:3:5-51
+	xmlns:android
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:24:5-77
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:24:22-74
+uses-permission#android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:25:5-92
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:25:22-89
+uses-permission#android.permission.FOREGROUND_SERVICE_DATA_SYNC
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:26:5-87
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:26:22-84
+uses-permission#android.permission.BLUETOOTH
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:29:5-31:38
+	android:maxSdkVersion
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:31:9-35
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:30:9-52
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:32:5-34:38
+	android:maxSdkVersion
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:34:9-35
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:33:9-58
+uses-permission#android.permission.BLUETOOTH_CONNECT
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:35:5-76
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:35:22-73
+uses-permission#android.permission.BLUETOOTH_SCAN
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:36:5-39:31
+	android:usesPermissionFlags
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:38:9-55
+	tools:targetApi
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:39:9-28
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:37:9-57
+uses-feature#android.hardware.usb.host
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:42:5-44:36
+	android:required
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:44:9-33
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:43:9-49
+uses-feature#android.hardware.usb.accessory
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:45:5-47:36
+	android:required
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:47:9-33
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:46:9-54
+uses-permission#android.permission.NFC
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:50:5-62
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:50:22-59
+uses-feature#android.hardware.nfc
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:51:5-53:36
+	android:required
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:53:9-33
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:52:9-44
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:56:5-79
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:56:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:57:5-76
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:57:22-73
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:58:5-76
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:58:22-73
+uses-permission#android.permission.INTERNET
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:59:5-67
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:59:22-64
+uses-permission#android.permission.WAKE_LOCK
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:62:5-68
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:62:22-65
+uses-permission#android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:63:5-95
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:63:22-92
+uses-permission#android.permission.SCHEDULE_EXACT_ALARM
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:66:5-79
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:66:22-76
+uses-permission#android.permission.USE_EXACT_ALARM
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:68:5-70:37
+	tools:ignore
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:70:9-34
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:69:9-58
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:73:5-81
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:73:22-78
+uses-permission#android.permission.AUTHENTICATE_ACCOUNTS
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:76:5-78:38
+	android:maxSdkVersion
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:78:9-35
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:77:9-64
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:79:5-71
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:79:22-68
+uses-permission#android.permission.MANAGE_ACCOUNTS
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:80:5-82:38
+	android:maxSdkVersion
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:82:9-35
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:81:9-58
+uses-permission#android.permission.READ_SYNC_SETTINGS
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:83:5-77
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:83:22-74
+uses-permission#android.permission.WRITE_SYNC_SETTINGS
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:84:5-78
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:84:22-75
+uses-permission#android.permission.POST_NOTIFICATIONS
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:87:5-77
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:87:22-74
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:90:5-92:38
+	android:maxSdkVersion
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:92:9-35
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:91:9-64
+uses-permission#android.permission.READ_MEDIA_IMAGES
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:93:5-76
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:93:22-73
+uses-permission#android.permission.READ_MEDIA_VIDEO
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:94:5-75
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:94:22-72
+uses-permission#android.permission.READ_MEDIA_AUDIO
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:95:5-75
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:95:22-72
+uses-permission#android.permission.READ_CONTACTS
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:98:5-72
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:98:22-69
+uses-permission#android.permission.READ_SMS
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:101:5-67
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:101:22-64
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:104:5-78
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:104:22-75
+uses-permission#android.permission.DISABLE_KEYGUARD
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:107:5-75
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:107:22-72
+uses-permission#android.permission.USE_FULL_SCREEN_INTENT
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:108:5-81
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:108:22-78
+uses-feature#android.hardware.telephony
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:111:5-113:36
+	android:required
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:113:9-33
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:112:9-50
+uses-permission#android.permission.RECEIVE_SMS
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:115:5-70
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:115:22-67
+uses-permission#android.permission.VIBRATE
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:121:5-66
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:121:22-63
+application
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:123:5-583:19
+service#com.service.framework.service.FwForegroundService
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:132:9-135:61
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:134:13-37
+	android:foregroundServiceType
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:135:13-58
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:133:13-77
+service#com.service.framework.service.DaemonService
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:142:9-146:41
+	android:process
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:146:13-38
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:144:13-37
+	android:foregroundServiceType
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:145:13-53
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:143:13-71
+service#com.service.framework.strategy.FwJobService
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:150:9-153:72
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:152:13-36
+	android:permission
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:153:13-69
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:151:13-71
+service#com.service.framework.account.AuthenticatorService
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:158:9-167:19
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:160:13-36
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:159:13-78
+intent-filter#action:name:android.accounts.AccountAuthenticator
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:161:13-163:29
+action#android.accounts.AccountAuthenticator
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:162:17-80
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:162:25-77
+meta-data#android.accounts.AccountAuthenticator
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:164:13-166:57
+	android:resource
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:166:17-54
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:165:17-69
+service#com.service.framework.account.SyncService
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:170:9-179:19
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:172:13-36
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:171:13-69
+intent-filter#action:name:android.content.SyncAdapter
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:173:13-175:29
+action#android.content.SyncAdapter
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:174:17-70
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:174:25-67
+meta-data#android.content.SyncAdapter
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:176:13-178:55
+	android:resource
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:178:17-52
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:177:17-59
+provider#com.service.framework.account.StubContentProvider
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:182:9-186:39
+	android:authorities
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:184:13-64
+	android:syncable
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:186:13-36
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:185:13-37
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:183:13-77
+receiver#com.service.framework.receiver.BluetoothReceiver
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:204:9-230:20
+	android:enabled
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:206:13-35
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:207:13-36
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:205:13-76
+intent-filter#action:name:android.bluetooth.a2dp.profile.action.CONNECTION_STATE_CHANGED+action:name:android.bluetooth.a2dp.profile.action.PLAYING_STATE_CHANGED+action:name:android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED+action:name:android.bluetooth.adapter.action.STATE_CHANGED+action:name:android.bluetooth.device.action.ACL_CONNECTED+action:name:android.bluetooth.device.action.ACL_DISCONNECTED+action:name:android.bluetooth.headset.profile.action.CONNECTION_STATE_CHANGED+action:name:android.media.AUDIO_BECOMING_NOISY+action:name:com.service.framework.TEST_WAKEUP
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:208:13-229:29
+	android:priority
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:208:28-51
+action#android.bluetooth.device.action.ACL_CONNECTED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:210:17-88
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:210:25-85
+action#android.bluetooth.device.action.ACL_DISCONNECTED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:211:17-91
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:211:25-88
+action#android.bluetooth.a2dp.profile.action.CONNECTION_STATE_CHANGED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:214:17-105
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:214:25-102
+action#android.bluetooth.a2dp.profile.action.PLAYING_STATE_CHANGED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:215:17-102
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:215:25-99
+action#android.bluetooth.headset.profile.action.CONNECTION_STATE_CHANGED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:218:17-108
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:218:25-105
+action#android.bluetooth.adapter.action.STATE_CHANGED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:221:17-89
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:221:25-86
+action#android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:222:17-100
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:222:25-97
+action#android.media.AUDIO_BECOMING_NOISY
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:225:17-77
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:225:25-74
+action#com.service.framework.TEST_WAKEUP
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:228:17-76
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:228:25-73
+receiver#com.service.framework.receiver.MediaButtonReceiver
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:237:9-244:20
+	android:enabled
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:239:13-35
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:240:13-36
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:238:13-78
+intent-filter#action:name:android.intent.action.MEDIA_BUTTON
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:241:13-243:29
+	android:priority
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:241:28-57
+action#android.intent.action.MEDIA_BUTTON
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:242:17-77
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:242:25-74
+receiver#com.service.framework.receiver.SystemEventReceiver
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:257:9-284:20
+	android:enabled
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:260:13-35
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:261:13-36
+	android:directBootAware
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:259:13-43
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:258:13-78
+intent-filter#action:name:android.intent.action.ACTION_POWER_CONNECTED+action:name:android.intent.action.ACTION_POWER_DISCONNECTED+action:name:android.intent.action.AIRPLANE_MODE+action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.LOCALE_CHANGED+action:name:android.intent.action.LOCKED_BOOT_COMPLETED+action:name:android.intent.action.MY_PACKAGE_REPLACED+action:name:android.intent.action.SCREEN_ON+action:name:android.intent.action.TIMEZONE_CHANGED+action:name:android.intent.action.TIME_SET+action:name:android.intent.action.USER_PRESENT+action:name:android.net.conn.CONNECTIVITY_CHANGE+action:name:com.service.framework.NATIVE_WAKEUP
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:262:13-283:29
+	android:priority
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:262:28-51
+action#android.intent.action.BOOT_COMPLETED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:264:17-79
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:264:25-76
+action#android.intent.action.LOCKED_BOOT_COMPLETED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:265:17-86
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:265:25-83
+action#android.intent.action.MY_PACKAGE_REPLACED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:268:17-84
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:268:25-81
+action#android.intent.action.USER_PRESENT
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:271:17-77
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:271:25-74
+action#android.net.conn.CONNECTIVITY_CHANGE
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:272:17-79
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:272:25-76
+action#android.intent.action.ACTION_POWER_CONNECTED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:273:17-87
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:273:25-84
+action#android.intent.action.ACTION_POWER_DISCONNECTED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:274:17-90
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:274:25-87
+action#android.intent.action.SCREEN_ON
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:275:17-74
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:275:25-71
+action#android.intent.action.TIME_SET
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:276:17-73
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:276:25-70
+action#android.intent.action.TIMEZONE_CHANGED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:277:17-81
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:277:25-78
+action#android.intent.action.LOCALE_CHANGED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:278:17-79
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:278:25-76
+action#android.intent.action.AIRPLANE_MODE
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:279:17-78
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:279:25-75
+action#com.service.framework.NATIVE_WAKEUP
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:282:17-78
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:282:25-75
+receiver#com.service.framework.receiver.UsbReceiver
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:297:9-313:20
+	android:enabled
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:299:13-35
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:300:13-36
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:298:13-70
+intent-filter#action:name:android.hardware.usb.action.USB_ACCESSORY_ATTACHED+action:name:android.hardware.usb.action.USB_ACCESSORY_DETACHED+action:name:android.hardware.usb.action.USB_DEVICE_ATTACHED+action:name:android.hardware.usb.action.USB_DEVICE_DETACHED+action:name:android.hardware.usb.action.USB_STATE
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:301:13-312:29
+	android:priority
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:301:28-51
+action#android.hardware.usb.action.USB_DEVICE_ATTACHED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:303:17-90
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:303:25-87
+action#android.hardware.usb.action.USB_DEVICE_DETACHED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:304:17-90
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:304:25-87
+action#android.hardware.usb.action.USB_ACCESSORY_ATTACHED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:307:17-93
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:307:25-90
+action#android.hardware.usb.action.USB_ACCESSORY_DETACHED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:308:17-93
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:308:25-90
+action#android.hardware.usb.action.USB_STATE
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:311:17-80
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:311:25-77
+receiver#com.service.framework.receiver.NfcReceiver
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:325:9-344:20
+	android:enabled
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:327:13-35
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:328:13-36
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:326:13-70
+intent-filter#action:name:android.nfc.action.ADAPTER_STATE_CHANGED+action:name:android.nfc.action.TAG_DISCOVERED+action:name:android.nfc.action.TRANSACTION_DETECTED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:329:13-338:29
+	android:priority
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:329:28-51
+action#android.nfc.action.TAG_DISCOVERED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:331:17-76
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:331:25-73
+action#android.nfc.action.ADAPTER_STATE_CHANGED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:334:17-83
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:334:25-80
+action#android.nfc.action.TRANSACTION_DETECTED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:337:17-82
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:337:25-79
+meta-data#android.nfc.action.TECH_DISCOVERED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:341:13-343:57
+	android:resource
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:343:17-54
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:342:17-66
+receiver#com.service.framework.receiver.MediaMountReceiver
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:356:9-375:20
+	android:enabled
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:358:13-35
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:359:13-36
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:357:13-77
+intent-filter#action:name:android.intent.action.MEDIA_BAD_REMOVAL+action:name:android.intent.action.MEDIA_EJECT+action:name:android.intent.action.MEDIA_MOUNTED+action:name:android.intent.action.MEDIA_REMOVED+action:name:android.intent.action.MEDIA_SCANNER_FINISHED+action:name:android.intent.action.MEDIA_SCANNER_STARTED+action:name:android.intent.action.MEDIA_UNMOUNTED+data:scheme:file
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:360:13-374:29
+	android:priority
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:360:28-51
+action#android.intent.action.MEDIA_MOUNTED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:362:17-78
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:362:25-75
+action#android.intent.action.MEDIA_UNMOUNTED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:363:17-80
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:363:25-77
+action#android.intent.action.MEDIA_EJECT
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:364:17-76
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:364:25-73
+action#android.intent.action.MEDIA_REMOVED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:365:17-78
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:365:25-75
+action#android.intent.action.MEDIA_BAD_REMOVAL
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:366:17-82
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:366:25-79
+action#android.intent.action.MEDIA_SCANNER_STARTED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:369:17-86
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:369:25-83
+action#android.intent.action.MEDIA_SCANNER_FINISHED
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:370:17-87
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:370:25-84
+data
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:373:17-47
+	android:scheme
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:373:23-44
+	android:mimeType
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:557:23-49
+receiver#com.service.framework.strategy.AlarmReceiver
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:378:9-381:40
+	android:enabled
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:380:13-35
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:381:13-37
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:379:13-72
+service#com.service.framework.strategy.FwAccessibilityService
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:392:9-402:19
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:394:13-36
+	android:permission
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:395:13-79
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:393:13-81
+intent-filter#action:name:android.accessibilityservice.AccessibilityService
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:396:13-398:29
+action#android.accessibilityservice.AccessibilityService
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:397:17-92
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:397:25-89
+meta-data#android.accessibilityservice
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:399:13-401:72
+	android:resource
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:401:17-69
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:400:17-60
+service#com.service.framework.strategy.FwNotificationListenerService
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:411:9-418:19
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:413:13-36
+	android:permission
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:414:13-87
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:412:13-88
+intent-filter#action:name:android.service.notification.NotificationListenerService
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:415:13-417:29
+action#android.service.notification.NotificationListenerService
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:416:17-99
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:416:25-96
+activity#com.service.framework.strategy.OnePixelActivity
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:428:9-435:75
+	android:excludeFromRecents
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:431:13-46
+	android:launchMode
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:434:13-48
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:432:13-37
+	android:configChanges
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:430:13-74
+	android:theme
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:435:13-72
+	android:finishOnTaskLaunch
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:433:13-47
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:429:13-75
+activity#com.service.framework.strategy.LockScreenActivity
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:446:9-455:43
+	android:turnScreenOn
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:455:13-40
+	android:excludeFromRecents
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:449:13-46
+	android:showWhenLocked
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:453:13-42
+	android:launchMode
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:451:13-48
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:450:13-37
+	android:showOnLockScreen
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:452:13-44
+	android:configChanges
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:448:13-87
+	android:theme
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:454:13-71
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:447:13-77
+service#com.service.framework.strategy.forcestop.AssistService1
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:464:9-468:42
+	android:process
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:468:13-39
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:466:13-37
+	android:foregroundServiceType
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:467:13-53
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:465:13-83
+service#com.service.framework.service.FloatWindowService
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:469:9-473:11
+	android:process
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:472:13-50
+	android:foregroundServiceType
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:471:13-53
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:470:13-55
+service#com.service.framework.strategy.forcestop.AssistService2
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:478:9-482:42
+	android:process
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:482:13-39
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:480:13-37
+	android:foregroundServiceType
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:481:13-53
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:479:13-83
+service#com.service.framework.strategy.forcestop.AssistService3
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:488:9-492:42
+	android:process
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:492:13-39
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:490:13-37
+	android:foregroundServiceType
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:491:13-53
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:489:13-83
+receiver#com.service.framework.strategy.forcestop.ForceStopReceiver
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:498:9-501:40
+	android:enabled
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:500:13-35
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:501:13-37
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:499:13-86
+service#com.service.framework.mediaroute.FwMediaRouteProviderService
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:516:9-522:19
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:518:13-36
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:517:13-88
+intent-filter#action:name:android.media.MediaRouteProviderService
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:519:13-521:29
+action#android.media.MediaRouteProviderService
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:520:17-82
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:520:25-79
+service#com.service.framework.mediaroute.FwMediaRoute2ProviderService
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:530:9-536:19
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:532:13-36
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:531:13-89
+intent-filter#action:name:android.media.MediaRoute2ProviderService
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:533:13-535:29
+action#android.media.MediaRoute2ProviderService
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:534:17-83
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:534:25-80
+activity#com.service.framework.mediaroute.FwMediaActivity
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:545:9-581:20
+	android:excludeFromRecents
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:547:13-46
+	android:noHistory
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:549:13-37
+	android:exported
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:548:13-36
+	android:theme
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:551:13-72
+	android:taskAffinity
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:550:13-36
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:546:13-76
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.DEFAULT+data:mimeType:audio/*
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:554:13-558:29
+	android:priority
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:554:28-51
+action#android.intent.action.VIEW
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:555:17-69
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:555:25-66
+category#android.intent.category.DEFAULT
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:556:17-76
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:556:27-73
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.DEFAULT+data:mimeType:video/*
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:561:13-565:29
+	android:priority
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:561:28-51
+intent-filter#action:name:android.intent.action.SEND+category:name:android.intent.category.DEFAULT+data:mimeType:audio/*
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:568:13-572:29
+	android:priority
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:568:28-51
+action#android.intent.action.SEND
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:569:17-69
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:569:25-66
+intent-filter#action:name:android.intent.action.SEND+category:name:android.intent.category.DEFAULT+data:mimeType:video/*
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:575:13-579:29
+	android:priority
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:575:28-51
+instrumentation
+ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:590:5-593:153
+	android:targetProcesses
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:593:9-150
+	android:targetPackage
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:592:9-49
+	android:name
+		ADDED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml:591:9-82
+uses-sdk
+INJECTED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml
+INJECTED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/zhaihongyuan/Downloads/KeepLiveService-main/framework/src/main/AndroidManifest.xml
